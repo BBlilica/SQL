@@ -37,3 +37,39 @@ WHERE HIRE_DATE LIKE '%05%'; -- 05가 들어간
 SELECT FIRST_NAME, EMAIL
 FROM EMPLOYEES
 WHERE EMAIL LIKE '_A%'; -- 2번째 자리가 A로 시작하는
+
+--IS NULL 연산자로 값을 테스트 합니다.
+--IS NULL 연산자는 NULL인 값에 대해서 테스트합니다.
+--NULL 값은 값이 없거나, 알 수 없거나, 적용할 수 없음을 의미합니다.
+--그러므로 NULL 값은 어떤 값과 같거나 다를 수 없으므로 (=)로는 테스트 할 수 없습니다.
+SELECT FIRST_NAME, MANAGER_ID
+FROM EMPLOYEES
+WHERE MANAGER_ID IS NULL;
+
+SELECT FIRST_NAME, MANAGER_ID
+FROM EMPLOYEES
+WHERE MANAGER_ID IS NOT NULL;
+
+-- AND는 양쪽의 조건이 참이어야 TRUE를 리턴합니다.
+--OR는 한쪽의 조건이 참이면 TRUE를 리턴합니다.
+--NOT 연산자는 뒤의 조건에 반대되는 결과를 리턴합니다.
+SELECT FIRST_NAME, JOB_ID, SALARY
+FROM EMPLOYEES
+WHERE JOB_ID='IT_PROG' AND SALARY>=5000;
+
+SELECT FIRST_NAME, JOB_ID, SALARY
+FROM EMPLOYEES
+WHERE JOB_ID='IT_PROG' OR SALARY>=5000;
+
+-- OR 연산자보다 AND 연산자가 우선순위가 높습니다.
+-- 비교 연산자보다 우선순위가 낮습니다.
+
+
+-- NOT 부정의 의미
+SELECT *
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID NOT IN (50, 60, 70);
+
+SELECT *
+FROM EMPLOYEES
+WHERE JOB_ID NOT LIKE '%IT%';
